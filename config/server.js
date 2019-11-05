@@ -10,8 +10,13 @@ var bodyParser = require('body-parser');
 /* importar o módulo do express-validator */
 var expressValidator = require('express-validator');
 
+/* importar o módulo do express-session */
+var expressSession = require('express-session');
+
 /* iniciar o objeto do express */
 var app = express();
+
+const PORT = process.env.PORT || 5000
 
 /* setar as variáveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs');
@@ -24,7 +29,14 @@ app.use(express.static('./app/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 /* configurar o middleware express-validator */
-app.use(expressValidator());
+//app.use(expressValidator());
+
+/* configurar o middleware express-validator */
+app.use(expressSession({
+	secret: 'wplayer',
+	resave: false,
+	saveUninitialized: true
+}));
 
 /* efetua o autoload das rotas, dos models e dos controllers para o objeto app */
 consign()
@@ -33,7 +45,11 @@ consign()
 	.then('app/controllers')
 	.into(app);
 
+/* parametrizar a porta de escuta */
+var server = app.listen(PORT, () => {	
+	console.log(`Executando na porta ${ PORT }`)
+	console.log('Servidor online e ativo');
+})
+
 /* exportar o objeto app */
 module.exports = app;
-
-//testes
