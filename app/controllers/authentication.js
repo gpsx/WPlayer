@@ -21,7 +21,11 @@ module.exports = {
                 .first()
         req.session.user = user
         if (user) {
-			return '/gamer'
+			if (user.PLAYER_ID == '') {
+                return '/corp/home'
+            }else{
+                return '/gamer/home'
+            }
 		}else{
 			return '/login'
 		}
