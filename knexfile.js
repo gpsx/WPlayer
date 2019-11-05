@@ -1,12 +1,5 @@
-// Update with your config settings.
 
 module.exports = {
-  // client: 'mysql',
-  // connection: {
-  //   database: 'desafiocap04',
-  //   user:     'root',
-  //   password: 'bandtec'
-  // },
   client: 'mssql',
   connection: {
     host: 'wplayer.database.windows.net',
