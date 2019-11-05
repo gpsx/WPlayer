@@ -9,20 +9,21 @@ module.exports = function (app) {
 		res.render('authentication/register', { err: {} });
 	});
 
+	app.get('/logout', (req, res) => {
+		req.session.destroy();
+		res.redirect('/login')
+	})
+
 	app.post('/register', async (req, res) => {
 		await controller.insertCustomer(req.body)
 		res.redirect('/login')
 	})
 
 	app.post('/login', async (req, res) => {
-		result = await controller.authenticateLogin(req.body, req)
-		if (result) {
-			res.redirect('/gamer')
-		}else{
-			res.redirect('/login')
-		}
+		var result = await controller.authenticateLogin(req.body, req)
+		console.log(req.session.user);
+		res.redirect(result)
 	})
-	app.get('/gamer', async (req, res) =>{
-		app.render('gamer/home')
-	})
+
+
 }   

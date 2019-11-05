@@ -19,13 +19,15 @@ module.exports = {
                 .where({CUSTOMER_EMAIL: user.email})
                 .where({CUSTOMER_PASSWORD: user.senha})
                 .first()
-        console.log(user) 
-
-        if (user == undefined) {
-            return false
-        }else{
-            req.session.user = result;
-            return true
-        }
+        req.session.user = user
+        if (user) {
+			if (user.PLAYER_ID == '') {
+                return '/corp/home'
+            }else{
+                return '/gamer/home'
+            }
+		}else{
+			return '/login'
+		}
     }
 };
