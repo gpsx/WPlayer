@@ -20,7 +20,7 @@
 		<div class="row small-spacing">
 			<div class="box-content">
 				<h3 class="box-title">Status da máquina</h3>
-				<div class="col-lg-4 col-xs-12">
+				<div class="col-lg-3 col-xs-12">
 					<div class="box-content">
 						<h4 class="box-title">CPU</h4>
 						<!-- /.dropdown js__dropdown -->
@@ -35,7 +35,7 @@
 				</div>
 				<!-- /.col-lg-3 col-xs-12 -->
 		
-				<div class="col-lg-4 col-xs-12">
+				<div class="col-lg-3 col-xs-12">
 					<div class="box-content">
 						<h4 class="box-title">RAM</h4>
 						<!-- /.dropdown js__dropdown -->
@@ -50,13 +50,27 @@
 				</div>
 				<!-- /.col-lg-3 col-xs-12 -->
 	
-				<div class="col-lg-4 col-xs-12">
+				<div class="col-lg-3 col-xs-12">
 					<div class="box-content">
 						<h4 class="box-title">DISCO</h4>
 						<!-- /.dropdown js__dropdown -->
 						<div class="text-center">
 							<div class="knob-wrap">
 								<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#00bf4f" data-readOnly=true data-thickness=".4" value="12"  />
+							</div>
+							<!-- .knob-wrap -->
+						</div>
+					</div>
+					<!-- /.box-content -->
+				</div>
+				<!-- /.col-lg-3 col-xs-12 -->
+				<div class="col-lg-3 col-xs-12">
+					<div class="box-content">
+						<h4 class="box-title">GPU</h4>
+						<!-- /.dropdown js__dropdown -->
+						<div class="text-center">
+							<div class="knob-wrap">
+								<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="45"  />
 							</div>
 							<!-- .knob-wrap -->
 						</div>
@@ -72,42 +86,19 @@
 						<!-- /.box-title -->
 						<!-- /.dropdown js__dropdown -->
 						<div class="task-lists">		
-							<a href="#" class="task-item col-lg-4 col-xs-12">
-								<img src="http://placehold.it/1000x667" alt="" class="margin-bottom-10">
-								<div class="title">
-									<p>Nome Jogo</p>
-									<p>Por que você jogou um jogo da categoria:</p>
-									<span class="notice notice-blue">Aventura</span>
-									<span class="notice notice-blue">Indie</span>
-									<span class="notice notice-blue">Ação</span>
-								</div>
-								<!-- /.title -->
-							</a>
-							<!-- /.task-item -->
-							<a href="#" class="task-item col-lg-4 col-xs-12">
-								<img src="http://placehold.it/1000x667" alt="" class="margin-bottom-10">
-								<div class="title">
-									<p>Nome Jogo</p>
-									<p>Por que você jogou um jogo da categoria:</p>
-									<span class="notice notice-blue">Aventura</span>
-									<span class="notice notice-blue">Indie</span>
-									<span class="notice notice-blue">Ação</span>
-								</div>
-								<!-- /.title -->
-							</a>
-							<a href="#" class="task-item col-lg-4 col-xs-12">
-								<img src="http://placehold.it/1000x667" alt="" class="margin-bottom-10">
-								<div class="title">
-									<p>Nome Jogo</p>
-									<p>Por que você jogou um jogo da categoria:</p>
-									<span class="notice notice-blue">Aventura</span>
-									<span class="notice notice-blue">Indie</span>
-									<span class="notice notice-blue">Ação</span>
-								</div>
-								<!-- /.title -->
-							</a>
-
-
+							<% for(recomendation of recomendations){%>
+								<a href="#" class="task-item col-lg-4 col-xs-12">
+									<img src="<%= recomendation.APP_HEADER_IMAGE%>" alt="" class="margin-bottom-10">
+									<div class="title">
+										<p><%= recomendation.APP_NAME %></p>
+										<p>Por que você jogou um jogo da categoria:</p>
+										<% for(genre of recomendation.APP_GENRES){%>
+											<span class="notice notice-blue"><%= genre %></span>
+										<% } %>
+									</div>
+									<!-- /.title -->
+								</a>
+							<% } %>
 						</div>
 						<!-- /.task-lists -->
 					</div>
