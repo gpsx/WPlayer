@@ -145,54 +145,34 @@
 	<%- include('../include/gamer/js-libs') -%>
 
 	<script>
+		console.log('<%= top5[0].APP_NAME %>')
 		var recentData = {
 			labels: ["Jogados \nrecentes"],
-			datasets: [{
-				label: 'Jogo 1',
-				backgroundColor: getRandomColor(),
-				borderWidth: 1,
-				data: [ 167 ]
-			}, {
-				label: 'Jogo 2',
-				backgroundColor: getRandomColor(),
-				data: [ 50 ]
-			}, {
-				label: 'Jogo 3',
-				backgroundColor: getRandomColor(),
-				data: [ 20 ]
-			}, {
-				label: 'Jogo 4',
-				backgroundColor: getRandomColor(),
-				data: [ 7 ]
-			}]
+			datasets: [
+				<% for(game of twoWeeks){ %>
+					{
+						label: '<%= game.APP_NAME %>',
+						backgroundColor: getRandomColor(),
+						borderWidth: 1,
+						data: [<%= game.WEEKS_HOURS %>]
+					},
+				<% } %>
+			]
 
 		};
 
 		var top5Data = {
 			labels: ["Jogos"],
-			datasets: [{
-				label: 'Jogo 1',
-				backgroundColor: getRandomColor(),
-				borderWidth: 1,
-				data: [ 927 ]
-			}, {
-				label: 'Jogo 2',
-				backgroundColor: getRandomColor(),
-				data: [ 800 ]
-			}, {
-				label: 'Jogo 3',
-				backgroundColor: getRandomColor(),
-				data: [ 750 ]
-			}, {
-				label: 'Jogo 4',
-				backgroundColor: getRandomColor(),
-				data: [ 233 ]
-			}, {
-				label: 'Jogo 5',
-				backgroundColor: getRandomColor(),
-				data: [ 154 ]
-			}]
-
+			datasets: [
+			<% for(game of top5){ %>
+				{
+					label: '<%= game.APP_NAME %>',
+					backgroundColor: getRandomColor(),
+					borderWidth: 1,
+					data: [<%= game.TOTAL_HOURS %>]
+				},
+			<% } %>
+			]
 		};
 
 		window.onload = function() {
