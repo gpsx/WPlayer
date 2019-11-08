@@ -68,27 +68,26 @@
 	<!-- /.pull-left -->
 </div>
 <!-- /.fixed-navbar -->
-<div id="wrapper" style="background-image: url(https://steamcdn-a.akamaihd.net/steam/apps/1000290/page_bg_generated_v6b.jpg?t=1559527510)">
+<div id="wrapper" style="background-image: url(<%= information.gameDetails.BACKGROUND_IMAGE%>)">
 	<div class="main-content">
 		<div class="row small-spacing">
 			<div class="col-lg-12 col-md-6">
 				<div class="box-contact">
-					<img src="http://placehold.it/450x450" alt="" class="avatar">
-					<h3 class="name margin-top-10">NomeJogo II</h3>
+					<img src="<%= information.gameDetails.GAME_IMG %>" alt="" class="avatar">
+					<h3 class="name margin-top-10"><%= information.gameDetails.APP_NAME %></h3>
 					<!-- /.name -->
-					<h4 class="job">R$ 99,00</h4>
-					<!-- /.job -->
+					<h4 class="job"><%= information.gameDetails.FORMATED_PRICE %></h4>
 					<div class="text">
 						<h3>
 							Descrição
 						</h3>
 						<p class="margin-bottom-20">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor error quibusdam officia amet dolores repellendus rem dolorum saepe!
+						<%= information.gameDetails.DESCRIPTION %>
 						</p>
 						<ul class="contact-social list-inline">
-							<span class="notice notice-blue">Aventura</span>
-							<span class="notice notice-blue">Indie</span>
-							<span class="notice notice-blue">Ação</span>
+							<% for( genres of information.gameDetails.GENRES) {%>
+								<span class="notice notice-blue"><%= genres%></span>
+							<% } %>
 						</ul>
 					</div>
 				</div>
@@ -97,9 +96,9 @@
 			<div class="col-lg-6 col-md-6 col-xs-12">
 				<div class="box-content">
 					<h3>Disponível para</h3>
-					<i class="fa fa-linux"></i>
-					<i class="fa fa-windows"></i>
-					<i class="fa fa-apple"></i>
+					<% for( platform of information.gameDetails.PLATFORMS){%>
+						<i class="fa fa-<%= platform %>"></i>
+					<% } %>
 				</div>
 				<!-- /.box-content -->
 			</div>
@@ -120,7 +119,7 @@
 					<!-- /.dropdown js__dropdown -->
 					<div class="text-center">
 						<div class="knob-wrap">
-							<input class="knob" data-width="250" data-height="250" data-bgColor="#ebeff2" data-fgColor="#5555ff" data-readOnly=true data-thickness=".4" value="12"  />
+							<input class="knob" data-width="250" data-height="250" data-bgColor="#ebeff2" data-fgColor="#5555ff" data-readOnly=true data-thickness=".4" value="<%= information.gameDetails.TOTAL_PERCENT_COMPLETED %>"  />
 						</div>
 						<!-- .knob-wrap -->
 					</div>
@@ -142,36 +141,14 @@
 							</tr>
 						</thead>
 						<tbody>
+							<% for(dlc of information.gameDLC) {%>
 							<tr>
-								<td>12123</td>
-								<td>Nome da dlc do jogo</td>
-								<td>R$ 8,00</td>
-								<td><a href="#"><i class="fa fa-steam"></i></a></td>
-							</tr>	
-							<tr>
-								<td>12123</td>
-								<td>Nome da dlc do jogo</td>
-								<td>R$ 8,00</td>
-								<td><a href="#"><i class="fa fa-steam"></i></a></td>
-							</tr>
-							<tr>
-								<td>12123</td>
-								<td>Nome da dlc do jogo</td>
-								<td>R$ 8,00</td>
-								<td><a href="#"><i class="fa fa-steam"></i></a></td>
-							</tr>
-							<tr>
-								<td>12123</td>
-								<td>Nome da dlc do jogo</td>
-								<td>R$ 8,00</td>
-								<td><a href="#"><i class="fa fa-steam"></i></a></td>
-							</tr>
-							<tr>
-								<td>12123</td>
-								<td>Nome da dlc do jogo</td>
-								<td>R$ 8,00</td>
-								<td><a href="#"><i class="fa fa-steam"></i></a></td>
-							</tr>					
+								<td><%= dlc.DLC_ID%></td>
+								<td><%= dlc.NAME_APP%></td>
+								<td><%= dlc.PRICE%></td>
+								<td><a href="https://store.steampowered.com/app/<%= dlc.DLC_ID%>"><i class="fa fa-steam"></i></a></td>
+							</tr>						
+							<%}%>
 						</tbody>
 					</table>
 					<!-- /.table -->
@@ -193,7 +170,7 @@
 			<div class="col-lg-6 col-md-6 col-xs-12">
 				<div class="box-content bg-info text-white">
 					<div class="float-left">
-						<strong>Minimum:</strong><br><ul class="bb_ul"><li><strong>OS:</strong> Windows 7 (32-bit Version)<br></li><li><strong>Processor:</strong> Latest Intel i3 / Ryzen<br></li><li><strong>Memory:</strong> 2 GB RAM<br></li><li><strong>Graphics:</strong> Geforce 600M / ATI HD 5450<br></li><li><strong>DirectX:</strong> Version 10<br></li><li><strong>Network:</strong> Broadband Internet connection<br></li><li><strong>Storage:</strong> 1 GB available space<br></li><li><strong>Sound Card:</strong> No specific requirements</li></ul>
+						<%- information.gameDetails.REQUIREMENTS_MINIMUM %>
 					</div>
 				</div>
 				<!-- /.box-content -->
@@ -201,7 +178,7 @@
 			<div class="col-lg-6 col-md-6 col-xs-12">
 				<div class="box-content bg-success text-white">
 					<div class="float-left">
-						<strong>Recomended:</strong><br><ul class="bb_ul"><li><strong>OS:</strong> Windows 7 (32-bit Version)<br></li><li><strong>Processor:</strong> Latest Intel i3 / Ryzen<br></li><li><strong>Memory:</strong> 2 GB RAM<br></li><li><strong>Graphics:</strong> Geforce 600M / ATI HD 5450<br></li><li><strong>DirectX:</strong> Version 10<br></li><li><strong>Network:</strong> Broadband Internet connection<br></li><li><strong>Storage:</strong> 1 GB available space<br></li><li><strong>Sound Card:</strong> No specific requirements</li></ul>
+						<%- information.gameDetails.REQUIREMENTS_RECOMMENDED %>
 					</div>
 				</div>
 				<!-- /.box-content -->
@@ -213,7 +190,7 @@
 						<div class="statistics-box with-icon">
 							<i class="ico small fa fa-crosshairs"></i>
 							<p class="text h2">Conquistas</p>
-							<h2 class="counter">37</h2>
+							<h2 class="counter"><%= information.gameDetails.AMOUNT_ACHIEVEMENTS%></h2>
 						</div>
 					</div>
 				</a>
