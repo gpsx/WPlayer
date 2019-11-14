@@ -91,16 +91,18 @@
 		</div>
 		<!-- /.row small-spacing -->
 		<div class="row small-spacing">
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-success text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">Nome máquina</p>
-						<h2 class="counter">Estável</h2>
+			<% for(machine of information.machines){ %>
+				<div class="col-lg-3 col-md-6 col-xs-12">
+					<div class="box-content bg-<%= machine.COMPUTER_STATE%> text-white">
+						<div class="statistics-box with-icon">
+							<i class="ico small fa fa-television"></i>
+							<p class="text text-white"><%= machine.MACHINE_NAME%></p>
+							<h2 class="counter">Estável</h2>
+						</div>
 					</div>
+					<!-- /.box-content -->
 				</div>
-				<!-- /.box-content -->
-			</div>
+			<% } %>
 			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
 			<div class="col-lg-3 col-md-6 col-xs-12">
 				<div class="box-content bg-success text-white">
