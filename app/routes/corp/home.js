@@ -10,4 +10,8 @@ module.exports = function (app) {
     
     res.render('corp/home', { information });
   });
+  app.post('/add/machine', async (req, res)=> {
+    await controller.insertMachine(req.body.name, req.session.user.CUSTOMER_ID)
+    res.redirect('/corp/home')
+  })
 }

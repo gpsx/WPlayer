@@ -16,6 +16,8 @@ var expressSession = require('express-session');
 /* iniciar o objeto do express */
 var app = express();
 
+var io = require('socket.io');
+
 const PORT = process.env.PORT || 5000
 
 /* setar as variáveis 'view engine' e 'views' do express */
@@ -51,5 +53,14 @@ var server = app.listen(PORT, () => {
 	console.log('Servidor online e ativo');
 })
 
+var s = io(server);
 /* exportar o objeto app */
-module.exports = app;
+module.exports = app, s;
+
+s.on('connection', (socket) => {//É mostrado quando alguem se conecta 
+
+	socket.on('requestCorpMachines', (CUSTOMER_ID)=>{	
+
+	})
+	
+})
