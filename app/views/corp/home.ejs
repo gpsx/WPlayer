@@ -93,7 +93,7 @@
 			</div>
 		</div>
 		<!-- /.row small-spacing -->
-		<div class="row small-spacing">
+		<div class="row small-spacing" id="machinesPlace">
 			<% for(machine of information.machines){ %>
 				<a href="/corp/detail/<%= machine.MACHINE_KEY%>">
 					<div class="col-lg-3 col-md-6 col-xs-12">
@@ -127,5 +127,34 @@
 	<script src="../assets/scripts/chart.sparkline.init.min.js"></script>
 
 	<script src="../assets/scripts/main.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+	<script>
+	var socket = io.connect('localhost:5000')	
+	setInterval(()=>{
+		console.log("The data is coming...");
+		socket.emit('requestCorpMachines', '<%= information.user.CUSTOMER_ID%>');
+	}, 7000);
+	
+	socket.on('getCorpMachines', (machines)=>{
+		console.log("The data arrived!");	
+		machinesPlace.innerHTML = ''
+		for(machine of machines.machines){
+			machinesPlace.innerHTML += `
+			<a href="/corp/detail/${machine.MACHINE_KEY}">
+					<div class="col-lg-3 col-md-6 col-xs-12">
+						<div class="box-content bg-${machine.COMPUTER_STATE} text-white">
+							<div class="statistics-box with-icon">
+								<i class="ico small fa fa-television"></i>
+								<p class="text text-white">${machine.MACHINE_NAME}</p>
+								<h2 class="counter">${machine.STATE_STRING}</h2>
+							</div>
+						</div>
+						<!-- /.box-content -->
+					</div>
+				</a>
+			`
+		}
+	})
+	</script>
 </body>
 </html>

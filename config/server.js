@@ -18,6 +18,8 @@ var app = express();
 
 var io = require('socket.io');
 
+var corpController = require('../app/controllers/home-corp')
+
 const PORT = process.env.PORT || 5000
 
 /* setar as variáveis 'view engine' e 'views' do express */
@@ -59,8 +61,12 @@ module.exports = app, s;
 
 s.on('connection', (socket) => {//É mostrado quando alguem se conecta 
 
-	socket.on('requestCorpMachines', (CUSTOMER_ID)=>{	
-
+	socket.on('requestCorpMachines', async (CUSTOMER_ID)=>{	
+		console.log('Data request on server...');
+		var machines = await corpController.getInformation(CUSTOMER_ID)
+		console.log(machines);
+		
+		s.emit('getCorpMachines',machines);
 	})
 	
 })
