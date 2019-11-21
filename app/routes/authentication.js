@@ -1,4 +1,5 @@
 const controller = require('./../controllers/authentication')
+const arrombado = require('./../controllers/home-gamer')
 
 module.exports = function (app) {
 	app.get('/login', async (req, res) => {
@@ -21,7 +22,7 @@ module.exports = function (app) {
 
 	app.post('/login', async (req, res) => {
 		var result = await controller.authenticateLogin(req.body, req)
-		console.log(req.session.user);
+		console.log(req.session.user);		
 		res.redirect(result)
 	})
 

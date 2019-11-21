@@ -15,5 +15,8 @@ module.exports = {
         }else{
             return true
         }
+    },
+    removeSomeChar: (string, char, replace)=>{
+        return string.replace(char, replace);
     }
 }
