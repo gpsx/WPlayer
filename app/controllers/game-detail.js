@@ -3,6 +3,7 @@ const db = require('../../config/db')
 module.exports = {
     getInformation: async (GAME_ID) => {
         var gameDetails = await db('VW_GAME_DETAILS').where({GAME_ID}).first()
+        console.log(gameDetails);
         
         gameDetails.PLATFORMS = gameDetails.PLATFORMS.split(' ')
         gameDetails.GENRES = gameDetails.GENRES.split('-')
