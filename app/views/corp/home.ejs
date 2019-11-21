@@ -23,14 +23,17 @@
 					<h4 class="box-title">Adicionar máquina</h4>
 					<!-- /.box-title -->
 					<div class="card-content">
-						<div class="input-group margin-bottom-20">
-							<input type="email" class="form-control" placeholder="Nome da máquina">
-							<div class="input-group-btn">
-								<button type="button" class="btn btn-success no-border waves-effect waves-light">
-									<i class="fa fa-plus text-white"></i>
-								</button></div>
-							<!-- /.input-group-btn -->
-						</div>
+						<form action="/add/machine" method="post">
+							<div class="input-group margin-bottom-20">
+								<input type="text" class="form-control" placeholder="Nome da máquina" required name="name">
+								<div class="input-group-btn">
+									<button type="submit" class="btn btn-success no-border waves-effect waves-light">
+										<i class="fa fa-plus text-white"></i>
+									</button>
+								</div>
+								<!-- /.input-group-btn -->
+							</div>
+						</form>
 					</div>
 					<!-- /.card-content -->
 				</div>
@@ -38,188 +41,70 @@
 			</div>
 		</div>
 		<!-- /.row small-spacing -->
-		<div class="row small-spacing">
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-success text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">Nome máquina</p>
-						<h2 class="counter">Estável</h2>
+		<div class="row small-spacing" id="machinesPlace">
+			<% for(machine of information.machines){ %>
+				<a href="/corp/detail/<%= machine.MACHINE_KEY%>">
+					<div class="col-lg-3 col-md-6 col-xs-12">
+						<div class="box-content bg-<%= machine.COMPUTER_STATE%> text-white">
+							<div class="statistics-box with-icon">
+								<i class="ico small fa fa-television"></i>
+								<p class="text text-white"><%= machine.MACHINE_NAME%></p>
+								<h2 class="counter"><%- machine.STATE_STRING%></h2>
+							</div>
+						</div>
+						<!-- /.box-content -->
 					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-success text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">ESTÁVEL</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-danger text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">PERIGO</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-warning text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">ATENÇÃO</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-warning text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">ATENÇÃO</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-success text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">ESTÁVEL</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-success text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">ESTÁVEL</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-warning text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">ATENÇÃO</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-success text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">ESTÁVEL</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-success text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">ESTÁVEL</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-danger text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">PERIGO</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-success text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">ESTÁVEL</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-warning text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">ATENÇÃO</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-success text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">ESTÁVEL</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-success text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h2 class="counter">ESTÁVEL</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
-			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
-			<div class="col-lg-3 col-md-6 col-xs-12">
-				<div class="box-content bg-info text-white">
-					<div class="statistics-box with-icon">
-						<i class="ico small fa fa-television"></i>
-						<p class="text text-white">NOME MÁQUINA</p>
-						<h5 class="counter">código máquina</h2>
-					</div>
-				</div>
-				<!-- /.box-content -->
-			</div>
+				</a>
+			<% } %>
 		</div>
 		<!-- .row -->
 	</div>
 	<!-- /.main-content -->
 
 </div>
+
 <%- include('../include/corp/js-libs') -%>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="../assets/scripts/jquery.min.js"></script>
+	<script src="../assets/scripts/modernizr.min.js"></script>
+	<script src="../assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="../assets/plugin/nprogress/nprogress.js"></script>
+	<script src="../assets/plugin/sweet-alert/sweetalert.min.js"></script>
+	<script src="../assets/plugin/waves/waves.min.js"></script>
+	<!-- Sparkline Chart -->
+	<script src="../assets/plugin/chart/sparkline/jquery.sparkline.min.js"></script>
+	<script src="../assets/scripts/chart.sparkline.init.min.js"></script>
+
+	<script src="../assets/scripts/main.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+	<script>
+	var socket = io.connect('localhost:5000')	
+	setInterval(()=>{
+		console.log("The data is coming...");
+		socket.emit('requestCorpMachines', '<%= information.user.CUSTOMER_ID%>');
+	}, 7000);
+	
+	socket.on('getCorpMachines', (machines)=>{
+		console.log("The data arrived!");	
+		machinesPlace.innerHTML = ''
+		for(machine of machines.machines){
+			machinesPlace.innerHTML += `
+			<a href="/corp/detail/${machine.MACHINE_KEY}">
+					<div class="col-lg-3 col-md-6 col-xs-12">
+						<div class="box-content bg-${machine.COMPUTER_STATE} text-white">
+							<div class="statistics-box with-icon">
+								<i class="ico small fa fa-television"></i>
+								<p class="text text-white">${machine.MACHINE_NAME}</p>
+								<h2 class="counter">${machine.STATE_STRING}</h2>
+							</div>
+						</div>
+						<!-- /.box-content -->
+					</div>
+				</a>
+			`
+		}
+	})
+	</script>
 </body>
 </html>

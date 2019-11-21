@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>WPLAYER - STARTER PAGE</title>
+
+	<!-- Main Styles -->
+	<link rel="stylesheet" href="../../../assets/styles/style.min.css">
+	
+	<!-- Themify Icon -->
+	<link rel="stylesheet" href="../../../assets/fonts/themify-icons/themify-icons.css">
+
+	<!-- mCustomScrollbar -->
+	<link rel="stylesheet" href="../../../assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+
+	<!-- Waves Effect -->
+	<link rel="stylesheet" href="../../../assets/plugin/waves/waves.min.css">
+
+	<!-- Sweet Alert -->
+	<link rel="stylesheet" href="../../../assets/plugin/sweet-alert/sweetalert.css">
+	
+</head>
+
+<body>
+<div class="main-menu">
+	<header class="header">
+		<a href="index.html" class="logo"><i class="ico ti-rocket"></i>WPLAYER</a>
+		<button type="button" class="button-close fa fa-times js__menu_close"></button>
+	</header>
+	<!-- /.header -->
+	<div class="content">
+
+		<div class="navigation">
+			<h5 class="title">Navigation</h5>
+			<!-- /.title -->
+			<ul class="menu js__accordion">
+				<li>
+					<a class="waves-effect" href="index.html"><i class="menu-icon ti-dashboard"></i><span>Home</span></a>
+				</li>
+				<li>
+					<a class="waves-effect" href="index.html"><i class="menu-icon ti-dashboard"></i><span>Meus Jogos</span></a>
+				</li>
+				<li>
+					<a class="waves-effect" href="index.html"><i class="menu-icon ti-dashboard"></i><span>Perfil Steam</span></a>
+				</li>
+				<li>
+					<a class="waves-effect" href="index.html"><i class="menu-icon ti-dashboard"></i><span>Suporte</span></a>
+				</li>
+			</ul>
+		</div>
+		<!-- /.navigation -->
+	</div>
+	<!-- /.content -->
+</div>
+<!-- /.main-menu -->
+
+<div class="fixed-navbar">
+	<div class="pull-left">
+		<button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
+		<h1 class="page-title">Status do perfil da steam</h1>
+		<!-- /.page-title -->
+	</div>
+	<!-- /.pull-left -->
+</div>
+<!-- /.fixed-navbar -->
+<div id="wrapper">
+	<div class="main-content">
+		<div class="row small-spacing">
+			<div class="col-md-3 col-xs-12">
+				<div class="box-content bordered primary margin-bottom-20">
+					<div class="profile-avatar">
+						<img src="<%= information.profileGamer.AVATAR%>" alt="">
+						<h3><strong><%= information.profileGamer.GAMER_NICKNAME%></strong></h3>
+						<h4><%= information.profileGamer.GAMER_API_NAME%></h4>
+					</div>
+					<!-- .profile-avatar -->
+					<table class="table table-hover no-margin">
+						<tbody>
+							<tr>
+								<td>Status</td>
+								<td><span class="notice notice-danger"><%= information.profileGamer.ACCOUNT_STATUS%></span></td>
+							</tr>
+							<tr>
+								<td>Level</td>
+								<td><%= information.profileGamer.CURRENT_LEVEL%></td>
+							</tr>
+							<tr>
+								<td>Member Since</td>
+								<td><%= information.profileGamer.CREATION_DATE%></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- /.box-content bordered -->
+			</div>
+			<!-- /.col-md-3 col-xs-12 -->
+			<div class="col-md-9 col-xs-12">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="box-content card">
+							<h4 class="box-title"><i class="fa fa-steam ico"></i>Sobre</h4>
+							<!-- /.box-title -->
+							<div class="card-content">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-xs-5"><label>Nome</label></div>
+											<!-- /.col-xs-5 -->
+											<div class="col-xs-7"><%= information.profileGamer.GAMER_NAME%></div>
+											<!-- /.col-xs-7 -->
+										</div>
+										<!-- /.row -->
+									</div>
+									<!-- /.col-md-6 -->
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-xs-5"><label>Email:</label></div>
+											<!-- /.col-xs-5 -->
+											<div class="col-xs-7"><%= information.profileGamer.CUSTOMER_EMAIL%></div>
+											<!-- /.col-xs-7 -->
+										</div>
+										<!-- /.row -->
+									</div>
+									<!-- /.col-md-6 -->
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-xs-5"><label>Nickname:</label></div>
+											<!-- /.col-xs-5 -->
+											<div class="col-xs-7"><%= information.profileGamer.GAMER_NICKNAME%></div>
+											<!-- /.col-xs-7 -->
+										</div>
+										<!-- /.row -->
+									</div>
+									<!-- /.col-md-6 -->
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-xs-5"><label>Estado do perfil:</label></div>
+											<!-- /.col-xs-5 -->
+											<div class="col-xs-7"><%= information.profileGamer.PROFILE_STATE%></div>
+											<!-- /.col-xs-7 -->
+										</div>
+										<!-- /.row -->
+									</div>
+									<!-- /.col-md-6 -->
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-xs-5"><label>Ultima vez online:</label></div>
+											<!-- /.col-xs-5 -->
+											<div class="col-xs-7"><%= information.profileGamer.LAST_LOGOFF%></div>
+											<!-- /.col-xs-7 -->
+										</div>
+										<!-- /.row -->
+									</div>
+									<!-- /.col-md-6 -->
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-xs-5"><label>Data de criação da conta:</label></div>
+											<!-- /.col-xs-5 -->
+											<div class="col-xs-7"><%= information.profileGamer.CREATION_DATE%></div>
+											<!-- /.col-xs-7 -->
+										</div>
+										<!-- /.row -->
+									</div>
+									<!-- /.col-md-6 -->
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-xs-5"><label>Código de utilização:</label></div>
+											<!-- /.col-xs-5 -->
+											<div class="col-xs-7"><%= information.profileGamer.MACHINE_KEY%></div>
+											<!-- /.col-xs-7 -->
+										</div>
+										<!-- /.row -->
+									</div>
+									<!-- /.col-md-6 -->
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-xs-5"><label>Valor atual da conta:</label></div>
+											<!-- /.col-xs-5 -->
+											<div class="col-xs-7"><%= information.profileGamer.ACCOUNT_VALUE%></div>
+											<!-- /.col-xs-7 -->
+										</div>
+										<!-- /.row -->
+									</div>
+									<!-- /.col-md-6 -->
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-xs-5"><label>Tempo total gasto na steam:</label></div>
+											<!-- /.col-xs-5 -->
+											<div class="col-xs-7"><%= information.profileGamer.TOTAL_HOURS%> h</div>
+											<!-- /.col-xs-7 -->
+										</div>
+										<!-- /.row -->
+									</div>
+									<!-- /.col-md-6 -->
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-xs-5"><label>Quantidade de jogos:</label></div>
+											<!-- /.col-xs-5 -->
+											<div class="col-xs-7"><%= information.profileGamer.AMOUNT_GAMES%></div>
+											<!-- /.col-xs-7 -->
+										</div>
+										<!-- /.row -->
+									</div>
+									<!-- /.col-md-6 -->
+								</div>
+								<!-- /.row -->
+							</div>
+							<!-- /.card-content -->
+						</div>
+						<!-- /.box-content card -->
+					</div>
+				</div>
+                <div class="row">
+                    <div class="box-content">
+                        <h4 class="box-title"><i class="ico fa fa-users"></i>Insignias</h4>
+                        <ul class="profile-friends-list list-inline">
+                            <li><a href="#" class="avatar"><img src="http://placehold.it/128x128" alt=""></a></li>
+                            <li><a href="#" class="avatar"><img src="http://placehold.it/128x128" alt=""></a></li>
+                            <li><a href="#" class="avatar"><img src="http://placehold.it/128x128" alt=""></a></li>
+                            <li><a href="#" class="avatar"><img src="http://placehold.it/128x128" alt=""></a></li>
+                            <li><a href="#" class="avatar"><img src="http://placehold.it/128x128" alt=""></a></li>
+                        </ul>
+                    </div>
+                    <!-- /.box-content -->
+                </div>
+			</div>
+			<!-- /.col-md-9 col-xs-12 -->
+		</div>
+	</div>
+	<!-- /.main-content -->
+
+</div>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="../../../assets/scripts/jquery.min.js"></script>
+	<script src="../../../assets/scripts/modernizr.min.js"></script>
+	<script src="../../../assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../../assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="../../../assets/plugin/nprogress/nprogress.js"></script>
+	<script src="../../../assets/plugin/sweet-alert/sweetalert.min.js"></script>
+	<script src="../../../assets/plugin/waves/waves.min.js"></script>
+	<!-- Sparkline Chart -->
+	<script src="../../../assets/plugin/chart/sparkline/jquery.sparkline.min.js"></script>
+	<script src="../../../assets/scripts/chart.sparkline.init.min.js"></script>
+
+	<script src="../../../assets/scripts/main.min.js"></script>
+</body>
+</html>
