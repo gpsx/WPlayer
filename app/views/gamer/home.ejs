@@ -70,7 +70,7 @@
 						<!-- /.dropdown js__dropdown -->
 						<div class="text-center">
 							<div class="knob-wrap">
-								<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="45"  />
+								<input id="GPU" class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="45"  />
 							</div>
 							<!-- .knob-wrap -->
 						</div>
@@ -87,12 +87,12 @@
 						<!-- /.dropdown js__dropdown -->
 						<div class="task-lists">		
 							<% for(recomendation of recomendations){%>
-								<a href="#" class="task-item col-lg-4 col-xs-12">
-									<img src="<%= recomendation.APP_HEADER_IMAGE%>" alt="" class="margin-bottom-10">
+								<a href="/gamer/game/detail/<%= recomendation.STEAM_ID%>>" class="task-item col-lg-4 col-xs-12">
+									<img src="<%= recomendation.GAME_IMG%>" alt="" class="margin-bottom-10">
 									<div class="title">
 										<p><%= recomendation.APP_NAME %></p>
 										<p>Por que você jogou um jogo da categoria:</p>
-										<% for(genre of recomendation.APP_GENRES){%>
+										<% for(genre of recomendation.MOTIVO){%>
 											<span class="notice notice-blue"><%= genre %></span>
 										<% } %>
 									</div>
@@ -230,6 +230,7 @@
 			}
 			return color;
 		}
+		$("#GPU").val("70").trigger('change')
 	</script>
 </body>
 </html>

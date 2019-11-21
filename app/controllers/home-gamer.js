@@ -25,9 +25,10 @@ module.exports = {
         //return result
     },
     getRecomendations: async (STEAM_ID)=>{
-        var result = await db('APPS').limit(6)
+        var result = await db('VW_RECOMMENDATION').where({STEAM_ID}).orderBy('TOTAL_RECOMMENDATIONS', 'desc').limit(6)
+
         for (const index in result) {
-            result[index].APP_GENRES = result[index].APP_GENRES.split(" - ")
+            result[index].MOTIVO = result[index].MOTIVO.split("-")
         }
         return result
     }

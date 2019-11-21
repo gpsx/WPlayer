@@ -1,11 +1,10 @@
-
 module.exports = {
   client: 'mssql',
   connection: {
-    host: 'wplayer.database.windows.net',
-    user: 'wplayer',
-    password: '#Gfgrupo9',
-    database: 'bdWPlayer',
+    host: 'servidor01191045.database.windows.net',
+    user: 'GF01191045',
+    password: '#Gf46768871838',
+    database: 'RaiseAdventurer',
     encrypt: true
   },
   pool: {
