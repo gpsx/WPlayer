@@ -27,6 +27,9 @@ module.exports = {
         return {
             date: date.getMonth()+1 + "/" + date.getDate() + "/" + date.getFullYear(),
             time: strTime
-        };
+        }
+    },
+    removeSomeChar: (string, char, replace)=>{
+        return string.replace(char, replace);
     }
 }

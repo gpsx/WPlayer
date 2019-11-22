@@ -10,9 +10,9 @@ module.exports = {
             PLAYER_ID : custumer.steamId,
             CUSTOMER_KEY: utils.getRandomCode()
         }
-        var a = await db('customer').insert(user)
+        await db('customer').insert(user)
         var result = await db('CUSTOMER')
-        await console.log(result, a);
+        await console.log(result);
     },
     authenticateLogin: async (user, req)=>{
         user = await db('CUSTOMER')
