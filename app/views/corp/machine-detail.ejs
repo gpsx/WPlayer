@@ -230,8 +230,9 @@
 			[{
 				type: 'line',
 				data: {
-					labels: [<%for(i in information.CPU){%>
-			'<%=information.CPU[i].date.time %>',
+					labels: [
+						<%for(i in information.CPU){%>
+							'<%=information.CPU[i].date.time %>',
 						<% } %>],
 		datasets: [{
 			label: 'Uso da CPU',
@@ -316,7 +317,6 @@
 				yAxes: [{
 					ticks: {
 						beginAtZero: true,
-						// Inclui a °C para o gráfico de Temperatura
 						callback: function (value) {
 							return value + ' %';
 						}
@@ -349,7 +349,6 @@
 				yAxes: [{
 					ticks: {
 						beginAtZero: true,
-						// Inclui a °C para o gráfico de Temperatura
 						callback: function (value) {
 							return value + ' %';
 						}
@@ -357,18 +356,17 @@
 				}]
 			}
 		}
-		},];
+		}];
 
-		window.onload = function () {
-			var cpuChart = document.getElementById('cpu').getContext('2d');
-			window.myLine = new Chart(cpuChart, config[0]);
-			var cpuChart = document.getElementById('gpu').getContext('2d');
-			window.myLine = new Chart(cpuChart, config[1]);
-			var ramChart = document.getElementById('ram').getContext('2d');
-			window.myLine = new Chart(ramChart, config[2])
-			var discoChart = document.getElementById('disco').getContext('2d');
-			window.myLine = new Chart(discoChart, config[3])
-		};
+
+		var cpuChart = document.getElementById('cpu').getContext('2d');
+		window.cpu = new Chart(cpuChart, config[0]);
+		var gpuChart = document.getElementById('gpu').getContext('2d');
+		window.gpu = new Chart(gpuChart, config[1]);
+		var ramChart = document.getElementById('ram').getContext('2d');
+		window.ram = new Chart(ramChart, config[2])
+		var discoChart = document.getElementById('disco').getContext('2d');
+		window.disco = new Chart(discoChart, config[3])
 		var socket = io.connect('localhost:5000')
 		setInterval(() => {
 			console.log("The data is coming...");
@@ -377,29 +375,29 @@
 		socket.on('getMachinePercent', (machine)=>{
 			console.log("The data arrived!");	
 			console.log(machine);
-			updateChart(cpu, machine.CPU, machine.date.time)
-			updateChart(ram, machine.RAM, machine.date.time)
-			updateChart(disco, machine.DISC, machine.date.time)
-			updateChart(gpu, machine.GPU, machine.date.time)
+			updateChart(window.cpu, machine.CPU, machine.date.time)
+			updateChart(window.ram, machine.RAM, machine.date.time)
+			updateChart(window.disco, machine.DISC, machine.date.time)
+			updateChart(window.gpu, machine.GPU, machine.date.time)
 			
 		})
 		function updateChart(id, data, time) {
-			if (cpu.data.labels.length <= 15) { //Se houver menos de 15 dados
-				cpu.data.labels.push(time);  //Coloca o horário no eixo X
+			if (id.data.labels.length <= 15) { //Se houver menos de 15 dados
+				id.data.labels.push(time);  //Coloca o horário no eixo X
 				console.log(data);
-				cpu.data.datasets.forEach((dataset) => {
+				id.data.datasets.forEach((dataset) => {
 					dataset.data.push(data); //Adiciona a temperatura no eixo Y
 				});
 			}
 			else {
-				cpu.data.labels.shift(); //Remove o primeiro registro de horário
-				cpu.data.labels.push(time); //Insere a data atual
-				cpu.data.datasets.forEach((dataset) => {
+				id.data.labels.shift(); //Remove o primeiro registro de horário
+				id.data.labels.push(time); //Insere a data atual
+				id.data.datasets.forEach((dataset) => {
 					dataset.data.shift(); //Remove o primeiro registro de tempertura
 					dataset.data.push(data); //Insere um novo registro de temperatura
 				});
 			}
-			cpu.update(); //Atualiza o gráfico
+			id.update(); //Atualiza o gráfico
 		}
 	</script>
 </body>

@@ -54,7 +54,6 @@ consign()
 /* parametrizar a porta de escuta */
 var server = app.listen(PORT, () => {	
 	console.log(`Executando na porta ${ PORT }`)
-	console.log('Servidor online e ativo');
 })
 
 var s = io(server);
