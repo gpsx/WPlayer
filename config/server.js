@@ -19,6 +19,8 @@ var app = express();
 var io = require('socket.io');
 
 var corpController = require('../app/controllers/home-corp')
+var machineController = require('../app/controllers/machine-detail')
+var utils = require('../app/utils/index')
 
 const PORT = process.env.PORT || 5000
 
@@ -52,7 +54,6 @@ consign()
 /* parametrizar a porta de escuta */
 var server = app.listen(PORT, () => {	
 	console.log(`Executando na porta ${ PORT }`)
-	console.log('Servidor online e ativo');
 })
 
 var s = io(server);
@@ -67,6 +68,19 @@ s.on('connection', (socket) => {//É mostrado quando alguem se conecta
 		console.log(machines);
 		
 		s.emit('getCorpMachines',machines);
+	})
+	socket.on('requestMachinePercent', async (key)=>{	
+		console.log('Data request on server...');
+		var machine = await machineController.getStates(key)
+		data = {
+			date: utils.formatDate(machine.INSERT_TIME),
+			CPU: Math.round((machine.CPU) * 100),
+            RAM: Math.round((machine.RAM) * 100),
+            DISC: Math.round((machine.DISC) * 100),
+            GPU: Math.round((machine.GPU) * 100)
+		}
+		console.log(data);
+		s.emit('getMachinePercent',data);
 	})
 	
 })

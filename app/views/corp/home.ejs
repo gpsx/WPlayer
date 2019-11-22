@@ -43,7 +43,7 @@
 		<!-- /.row small-spacing -->
 		<div class="row small-spacing" id="machinesPlace">
 			<% for(machine of information.machines){ %>
-				<a href="/corp/detail/<%= machine.MACHINE_KEY%>">
+				<a href="/machine/<%= machine.MACHINE_KEY%>">
 					<div class="col-lg-3 col-md-6 col-xs-12">
 						<div class="box-content bg-<%= machine.COMPUTER_STATE%> text-white">
 							<div class="statistics-box with-icon">
@@ -90,7 +90,7 @@
 		machinesPlace.innerHTML = ''
 		for(machine of machines.machines){
 			machinesPlace.innerHTML += `
-			<a href="/corp/detail/${machine.MACHINE_KEY}">
+			<a href="/machine/${machine.MACHINE_KEY}">
 					<div class="col-lg-3 col-md-6 col-xs-12">
 						<div class="box-content bg-${machine.COMPUTER_STATE} text-white">
 							<div class="statistics-box with-icon">

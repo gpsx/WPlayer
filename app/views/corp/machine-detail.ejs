@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>WPLAYER - STARTER PAGE</title>
+
+	<!-- Main Styles -->
+	<link rel="stylesheet" href="../assets/styles/style.min.css">
+
+	<!-- Themify Icon -->
+	<link rel="stylesheet" href="../assets/fonts/themify-icons/themify-icons.css">
+
+	<!-- mCustomScrollbar -->
+	<link rel="stylesheet" href="../assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+
+	<!-- Waves Effect -->
+	<link rel="stylesheet" href="../assets/plugin/waves/waves.min.css">
+
+	<!-- Sweet Alert -->
+	<link rel="stylesheet" href="../assets/plugin/sweet-alert/sweetalert.css">
+
+	<!-- Data Tables -->
+	<link rel="stylesheet" href="../assets/plugin/datatables/media/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css">
+
+</head>
+
+<body>
+	<div class="main-menu">
+		<header class="header">
+			<a href="index.html" class="logo"><i class="ico ti-harddrive"></i>WPERFORANCE</a>
+			<button type="button" class="button-close fa fa-times js__menu_close"></button>
+		</header>
+		<!-- /.header -->
+		<div class="content">
+
+			<div class="navigation">
+				<ul class="menu js__accordion">
+					<li>
+						<a class="waves-effect" href="index.html"><i
+								class="menu-icon ti-dashboard"></i><span>Home</span></a>
+					</li>
+					<li>
+						<a class="waves-effect" href="index.html"><i
+								class="menu-icon ti-dashboard"></i><span>Histórico</span></a>
+					</li>
+					<li>
+						<a class="waves-effect" href="index.html"><i
+								class="menu-icon ti-dashboard"></i><span>Perfil</span></a>
+					</li>
+					<li>
+						<a class="waves-effect" href="index.html"><i
+								class="menu-icon ti-dashboard"></i><span>Suporte</span></a>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navigation -->
+		</div>
+		<!-- /.content -->
+	</div>
+	<!-- /.main-menu -->
+
+	<div class="fixed-navbar">
+		<div class="pull-left">
+			<button type="button"
+				class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
+			<h1 class="page-title">Nome da máquina</h1>
+			<!-- /.page-title -->
+		</div>
+		<!-- /.pull-left -->
+	</div>
+	<!-- /.fixed-navbar -->
+	<div id="wrapper">
+		<div class="main-content">
+			<div class="row small-spacing">
+				<div class="col-lg-12 col-xs-12">
+					<div class="col-lg-4 col-md-6 col-xs-12">
+						<div class="box-content bg-info text-white">
+							<div class="statistics-box with-icon">
+								<i class="ico small fa fa-laptop"></i>
+								<p class="text text-white">Nome máquina</p>
+								<h2 class="counter"><%=information.name%></h2>
+							</div>
+						</div>
+						<!-- /.box-content -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-xs-12">
+						<div class="box-content">
+							<div class="statistics-box with-icon">
+								<i class="ico small fa fa-key"></i>
+								<p class="text">Código da máquina</p>
+								<h3 class="counter"><%=information.key%></h2>
+							</div>
+						</div>
+						<!-- /.box-content -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-xs-12">
+						<div class="box-content bg-success text-white">
+							<div class="statistics-box with-icon">
+								<i class="ico small fa fa-thumbs-o-up"></i>
+								<p class="text text-white">Estado da máquina</p>
+								<h2 class="counter">Estável</h2>
+							</div>
+						</div>
+						<!-- /.box-content -->
+					</div>
+				</div>
+				<!-- /.col-lg-3 col-xs-12 -->
+			</div>
+			<!-- /.row small-spacing -->
+			<div class="row small-spacing">
+				<div class="col-lg-6 col-md-12">
+					<div class="box-content">
+						<h4 class="box-title">CPU</h4>
+						<canvas id="cpu" class="chartjs-chart" width="480" height="500"></canvas>
+						<!-- /#bar-chartjs-chart.chartjs-chart -->
+					</div>
+					<!-- /.box-content -->
+				</div>
+				<!-- /.col-lg-6 col-md-12 -->
+				<div class="col-lg-6 col-md-12">
+					<div class="box-content">
+						<h4 class="box-title">GPU</h4>
+						<canvas id="gpu" class="chartjs-chart" width="480" height="500"></canvas>
+						<!-- /#bar-chartjs-chart.chartjs-chart -->
+					</div>
+					<!-- /.box-content -->
+				</div>
+				<!-- /.col-lg-6 col-md-12 -->
+
+				<div class="col-lg-6 col-md-12">
+					<div class="box-content">
+						<h4 class="box-title">RAM</h4>
+						<!-- /.box-title -->
+						<canvas id="ram" class="chartjs-chart" width="480" height="500"></canvas>
+						<!-- /#horizontal-bar-chartjs-chart.chartjs-chart -->
+					</div>
+					<!-- /.box-content -->
+				</div>
+				<!-- /.col-lg-6 col-md-12 -->
+
+				<div class="col-lg-6 col-md-12">
+					<div class="box-content">
+						<h4 class="box-title">DISCO</h4>
+						<!-- /.box-title -->
+						<canvas id="disco" class="chartjs-chart" width="480" height="500"></canvas>
+						<!-- /#horizontal-bar-chartjs-chart.chartjs-chart -->
+					</div>
+					<!-- /.box-content -->
+				</div>
+				<!-- /.col-lg-6 col-md-12 -->
+			</div>
+			<div class="row small-spacing">
+				<div class="col-xs-12">
+					<div class="box-content">
+						<h4 class="box-title">Histórico</h4>
+						<table id="example" class="table table-striped table-bordered display" style="width:100%">
+							<thead>
+								<tr>
+									<th>CPU</th>
+									<th>RAM</th>
+									<th>DISCO</th>
+									<th>GPU</th>
+									<th>Horário e data</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<th>CPU</th>
+									<th>RAM</th>
+									<th>DISCO</th>
+									<th>GPU</th>
+									<th>Horário e data</th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<%for(state of information.state){%>
+								<tr>
+									<td><%=state.CPU %>%</td>
+									<td><%=state.RAM %>%</td>
+									<td><%=state.DISC %>%</td>
+									<td><%=state.GPU %>%</td>
+									<td><%=state.date.date + ' ' + state.date.time %></td>
+								</tr>
+								<% } %>
+							</tbody>
+						</table>
+					</div>
+					<!-- /.box-content -->
+				</div>
+			</div>
+		</div>
+		<!-- /.main-content -->
+
+	</div>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="../assets/scripts/jquery.min.js"></script>
+	<script src="../assets/scripts/modernizr.min.js"></script>
+	<script src="../assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="../assets/plugin/nprogress/nprogress.js"></script>
+	<script src="../assets/plugin/sweet-alert/sweetalert.min.js"></script>
+	<script src="../assets/plugin/waves/waves.min.js"></script>
+	<!-- Sparkline Chart -->
+	<script src="../assets/plugin/chart/sparkline/jquery.sparkline.min.js"></script>
+	<script src="../assets/scripts/chart.sparkline.init.min.js"></script>
+
+	<!-- chart.js Chart -->
+	<script src="../assets/plugin/chart/chartjs/Chart.bundle.min.js"></script>
+	<script src="../assets/scripts/jquery.chartjs.init.min.js"></script>
+
+	<!-- Data Tables -->
+	<script src="../assets/plugin/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script src="../assets/plugin/datatables/media/js/dataTables.bootstrap.min.js"></script>
+	<script src="../assets/plugin/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+	<script src="../assets/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js"></script>
+	<script src="../assets/scripts/datatables.demo.min.js"></script>
+
+	<script src="../assets/scripts/main.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+
+	<script>
+		var config =
+			[{
+				type: 'line',
+				data: {
+					labels: [
+						<%for(i in information.CPU){%>
+							'<%=information.CPU[i].date.time %>',
+						<% } %>],
+		datasets: [{
+			label: 'Uso da CPU',
+			backgroundColor: "#5842a1",
+			borderColor: "#5842a1",
+			data: [
+						<%for(i in information.CPU){%>
+							<%=information.CPU[i].data %>,
+						<% } %>
+					],
+			fill: false,
+				}]
+			},
+		options: {
+			responsive: true,
+				scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						// Inclui a °C para o gráfico de Temperatura
+						callback: function (value) {
+							return value + ' %';
+						}
+					}
+				}]
+			}
+		}
+		},
+		{
+			type: 'line',
+				data: {
+				labels: [<%for (i in information.GPU) {%>
+					'<%=information.GPU[i].date.time %>',
+						<% } %>],
+				datasets: [{
+					label: 'Uso da GPU',
+					backgroundColor: "#5842a1",
+					borderColor: "#5842a1",
+					data: [
+						<%for(i in information.GPU){%>
+							<%=information.GPU[i].data %>,
+						<% } %>
+					],
+			fill: false,
+				}]
+			},
+		options: {
+			responsive: true,
+				scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						// Inclui a °C para o gráfico de Temperatura
+						callback: function (value) {
+							return value + ' %';
+						}
+					}
+				}]
+			}
+		}
+		}, {
+			type: 'line',
+				data: {
+				labels: [<%for (i in information.RAM) {%>
+					'<%=information.RAM[i].date.time %>',
+						<% } %>],
+				datasets: [{
+					label: 'Uso de Memória RAM',
+					backgroundColor: "#5842a1",
+					borderColor: "#5842a1",
+					data: [
+						<%for(i in information.RAM){%>
+							<%=information.RAM[i].data %>,
+						<% } %>
+					],
+			fill: false,
+				}]
+			},
+		options: {
+			responsive: true,
+				scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						callback: function (value) {
+							return value + ' %';
+						}
+					}
+				}]
+			}
+		}
+		},
+		{
+			type: 'line',
+				data: {
+				labels: [<%for (i in information.DISC) {%>
+					'<%=information.DISC[i].date.time %>',
+						<% } %>],
+				datasets: [{
+					label: 'Uso de disco',
+					backgroundColor: "#5842a1",
+					borderColor: "#5842a1",
+					data: [
+						<%for(i in information.DISC){%>
+							<%=information.DISC[i].data %>,
+						<% } %>
+					],
+			fill: false,
+				}]
+			},
+		options: {
+			responsive: true,
+				scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+						callback: function (value) {
+							return value + ' %';
+						}
+					}
+				}]
+			}
+		}
+		}];
+
+
+		var cpuChart = document.getElementById('cpu').getContext('2d');
+		window.cpu = new Chart(cpuChart, config[0]);
+		var gpuChart = document.getElementById('gpu').getContext('2d');
+		window.gpu = new Chart(gpuChart, config[1]);
+		var ramChart = document.getElementById('ram').getContext('2d');
+		window.ram = new Chart(ramChart, config[2])
+		var discoChart = document.getElementById('disco').getContext('2d');
+		window.disco = new Chart(discoChart, config[3])
+		var socket = io.connect('localhost:5000')
+		setInterval(() => {
+			console.log("The data is coming...");
+			socket.emit('requestMachinePercent', '<%= information.key%>');
+		}, 7000);
+		socket.on('getMachinePercent', (machine)=>{
+			console.log("The data arrived!");	
+			console.log(machine);
+			updateChart(window.cpu, machine.CPU, machine.date.time)
+			updateChart(window.ram, machine.RAM, machine.date.time)
+			updateChart(window.disco, machine.DISC, machine.date.time)
+			updateChart(window.gpu, machine.GPU, machine.date.time)
+			
+		})
+		function updateChart(id, data, time) {
+			if (id.data.labels.length <= 15) { //Se houver menos de 15 dados
+				id.data.labels.push(time);  //Coloca o horário no eixo X
+				console.log(data);
+				id.data.datasets.forEach((dataset) => {
+					dataset.data.push(data); //Adiciona a temperatura no eixo Y
+				});
+			}
+			else {
+				id.data.labels.shift(); //Remove o primeiro registro de horário
+				id.data.labels.push(time); //Insere a data atual
+				id.data.datasets.forEach((dataset) => {
+					dataset.data.shift(); //Remove o primeiro registro de tempertura
+					dataset.data.push(data); //Insere um novo registro de temperatura
+				});
+			}
+			id.update(); //Atualiza o gráfico
+		}
+	</script>
+</body>
+
+</html>
