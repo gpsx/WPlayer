@@ -72,12 +72,21 @@ s.on('connection', (socket) => {//É mostrado quando alguem se conecta
 	socket.on('requestMachinePercent', async (key)=>{	
 		console.log('Data request on server...');
 		var machine = await machineController.getStates(key)
-		data = {
-			date: utils.formatDate(machine.INSERT_TIME),
-			CPU: Math.round((machine.CPU) * 100),
-            RAM: Math.round((machine.RAM) * 100),
-            DISC: Math.round((machine.DISC) * 100),
-            GPU: Math.round((machine.GPU) * 100)
+		if (machine == undefined) {
+			data = {
+				CPU: 0,
+				RAM: 0,
+				DISC: 0,
+				GPU: 0
+			}
+		}else{
+			data = {
+				date: utils.formatDate(machine.INSERT_TIME),
+				CPU: Math.round((machine.CPU) * 100),
+				RAM: Math.round((machine.RAM) * 100),
+				DISC: Math.round((machine.DISC) * 100),
+				GPU: Math.round((machine.GPU) * 100)
+			}
 		}
 		console.log(data);
 		s.emit('getMachinePercent',data);

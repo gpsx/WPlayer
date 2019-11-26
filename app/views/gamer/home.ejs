@@ -26,7 +26,7 @@
 						<!-- /.dropdown js__dropdown -->
 						<div class="text-center">
 							<div class="knob-wrap">
-								<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="45"  />
+								<input id="CPU" class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="0"  />
 							</div>
 							<!-- .knob-wrap -->
 						</div>
@@ -41,7 +41,7 @@
 						<!-- /.dropdown js__dropdown -->
 						<div class="text-center">
 							<div class="knob-wrap">
-								<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#f60e0e" data-readOnly=true data-thickness=".4" value="87"  />
+								<input id="RAM" class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="0"  />
 							</div>
 							<!-- .knob-wrap -->
 						</div>
@@ -56,7 +56,7 @@
 						<!-- /.dropdown js__dropdown -->
 						<div class="text-center">
 							<div class="knob-wrap">
-								<input class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#00bf4f" data-readOnly=true data-thickness=".4" value="12"  />
+								<input id="DISC" class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="0"  />
 							</div>
 							<!-- .knob-wrap -->
 						</div>
@@ -70,7 +70,7 @@
 						<!-- /.dropdown js__dropdown -->
 						<div class="text-center">
 							<div class="knob-wrap">
-								<input id="GPU" class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="45"  />
+								<input id="GPU" class="knob" data-width="150" data-height="150" data-bgColor="#ebeff2" data-fgColor="#304ffe" data-readOnly=true data-thickness=".4" value="0"  />
 							</div>
 							<!-- .knob-wrap -->
 						</div>
@@ -230,7 +230,20 @@
 			}
 			return color;
 		}
-		$("#GPU").val("70").trigger('change')
+		var socket = io.connect('localhost:5000')
+		setInterval(() => {
+			console.log("The data is coming...");
+			socket.emit('requestMachinePercent', '<%= user.MACHINE_KEY%>');
+		}, 7000);
+		socket.on('getMachinePercent', (machine)=>{
+			console.log("The data arrived!");	
+			console.log(machine);
+			$("#GPU").val(machine.GPU).trigger('change')
+			$("#CPU").val(machine.CPU).trigger('change')
+			$("#RAM").val(machine.RAM).trigger('change')
+			$("#DISC").val(machine.DISC).trigger('change')
+		})
+		
 	</script>
 </body>
 </html>

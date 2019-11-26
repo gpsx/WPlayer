@@ -10,6 +10,6 @@ module.exports = function (app) {
 		const hardwareInfo = await controller.getLastHardware(user.CUSTUMER_KEY)
 		const recomendations = await controller.getRecomendations(user.PLAYER_ID)
 		console.log(top5, twoWeeks, hardwareInfo, recomendations)
-		res.render('gamer/home', { top5, twoWeeks, hardwareInfo, recomendations });
+		res.render('gamer/home', { top5, twoWeeks, hardwareInfo, recomendations, user });
 	});
 }

@@ -7,14 +7,15 @@ module.exports = {
         var user = { 
             CUSTOMER_EMAIL : custumer.email,
             CUSTOMER_PASSWORD : custumer.senha,
-            PLAYER_ID : custumer.steamId,
-            CUSTOMER_KEY: utils.getRandomCode()
+            PLAYER_ID : "aaaaaa",
+            CUSTOMER_NAME: custumer.nome,
         }
-        await db('customer').insert(user)
+        await db('CUSTOMER').insert(user)
         var result = await db('CUSTOMER')
         await console.log(result);
     },
     authenticateLogin: async (user, req)=>{
+        var key = utils.getRandomCode()
         user = await db('CUSTOMER')
                 .where({CUSTOMER_EMAIL: user.email})
                 .where({CUSTOMER_PASSWORD: user.senha})
@@ -24,6 +25,12 @@ module.exports = {
 			if (user.PLAYER_ID == '') {
                 return '/corp/home'
             }else{
+                await db('MACHINE').insert({
+                    CUSTOMER_ID: user.CUSTOMER_ID,
+                    MACHINE_NAME: user.CUSTOMER_NAME +" PC",
+                    MACHINE_KEY: key
+                })
+                req.session.user.MACHINE_KEY = key
                 return '/gamer/home'
             }
 		}else{
