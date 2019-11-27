@@ -25,7 +25,7 @@ module.exports = {
         minutes = minutes < 10 ? '0'+minutes : minutes;
         var strTime = hours + ':' + minutes + ' ' + ampm;
         return {
-            date: date.getMonth()+1 + "/" + date.getDate() + "/" + date.getFullYear(),
+            date:  date.getDate() + "/" + date.getMonth()+1 + "/" + date.getFullYear(),
             time: strTime
         }
     },
