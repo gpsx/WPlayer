@@ -4,10 +4,11 @@ const utils = require('./../utils/')
 module.exports = {
     insertCustomer: async (custumer) =>{
         console.log(custumer)
+        if(custumer.steamId == "") custumer.steamId = null
         var user = { 
             CUSTOMER_EMAIL : custumer.email,
             CUSTOMER_PASSWORD : custumer.senha,
-            PLAYER_ID : "aaaaaa",
+            PLAYER_ID : custumer.steamId,
             CUSTOMER_NAME: custumer.nome,
         }
         await db('CUSTOMER').insert(user)
