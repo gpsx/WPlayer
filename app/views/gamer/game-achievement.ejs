@@ -27,45 +27,18 @@
 </head>
 
 <body>
-<div class="main-menu">
-	<header class="header">
-		<a href="index.html" class="logo"><i class="ico ti-rocket"></i>WPLAYER</a>
-		<button type="button" class="button-close fa fa-times js__menu_close"></button>
-	</header>
-	<!-- /.header -->
-	<div class="content">
-
-		<div class="navigation">
-			<h5 class="title">Navigation</h5>
-			<!-- /.title -->
-			<ul class="menu js__accordion">
-				<li>
-					<a class="waves-effect" href="index.html"><i class="menu-icon ti-dashboard"></i><span>Home</span></a>
-				</li>
-				<li>
-					<a class="waves-effect" href="index.html"><i class="menu-icon ti-dashboard"></i><span>Meus Jogos</span></a>
-				</li>
-				<li>
-					<a class="waves-effect" href="index.html"><i class="menu-icon ti-dashboard"></i><span>Perfil Steam</span></a>
-				</li>
-				<li>
-					<a class="waves-effect" href="index.html"><i class="menu-icon ti-dashboard"></i><span>Suporte</span></a>
-				</li>
-			</ul>
-		</div>
-		<!-- /.navigation -->
-	</div>
-	<!-- /.content -->
-</div>
-<!-- /.main-menu -->
+<%- include('../include/gamer/sidebar') -%>
 
 <div class="fixed-navbar">
 	<div class="pull-left">
 		<button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
-		<h1 class="page-title">Conquistas do Nome Jogo II</h1>
+		<h1 class="page-title">Conquistas do <%= information.gameDetails.APP_NAME%></h1>
 		<!-- /.page-title -->
 	</div>
 	<!-- /.pull-left -->
+	<div class="pull-right">
+		<a href="../../../logout" class="ico-item fa fa-sign-out"></a>
+	</div>
 </div>
 <!-- /.fixed-navbar -->
 <div id="wrapper" style="background-image: url(https://steamcdn-a.akamaihd.net/steam/apps/1000290/page_bg_generated_v6b.jpg?t=1559527510)">

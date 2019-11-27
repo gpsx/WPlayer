@@ -4,6 +4,7 @@ const utils = require('./../utils/')
 module.exports = {
     insertCustomer: async (custumer) =>{
         console.log(custumer)
+        var key = utils.getRandomCode()
         if(custumer.steamId == "") custumer.steamId = null
         var user = { 
             CUSTOMER_EMAIL : custumer.email,
@@ -12,11 +13,17 @@ module.exports = {
             CUSTOMER_NAME: custumer.nome,
         }
         await db('CUSTOMER').insert(user)
-        var result = await db('CUSTOMER')
+        var result = await db('CUSTOMER').orderBy('CUSTOMER_ID', 'desc').first()
+        if (user.PLAYER_ID != null) {
+            await db('MACHINE').insert({
+                CUSTOMER_ID: result.CUSTOMER_ID,
+                MACHINE_NAME: user.CUSTOMER_NAME +" PC",
+                MACHINE_KEY: key
+            })
+        }
         await console.log(result);
     },
     authenticateLogin: async (user, req)=>{
-        var key = utils.getRandomCode()
         user = await db('CUSTOMER')
                 .where({CUSTOMER_EMAIL: user.email})
                 .where({CUSTOMER_PASSWORD: user.senha})
@@ -26,12 +33,11 @@ module.exports = {
 			if (user.PLAYER_ID == '') {
                 return '/corp/home'
             }else{
-                await db('MACHINE').insert({
-                    CUSTOMER_ID: user.CUSTOMER_ID,
-                    MACHINE_NAME: user.CUSTOMER_NAME +" PC",
-                    MACHINE_KEY: key
-                })
-                req.session.user.MACHINE_KEY = key
+                console.log('porcaria');
+                var machine = await db('MACHINE').where({ CUSTOMER_ID: req.session.user.CUSTOMER_ID }).first()
+                console.log(machine);
+                req.session.user.MACHINE_KEY = machine.MACHINE_KEY
+                console.log(req.session.user);
                 return '/gamer/home'
             }
 		}else{
