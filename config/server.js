@@ -22,7 +22,7 @@ var corpController = require('../app/controllers/home-corp')
 var machineController = require('../app/controllers/machine-detail')
 var utils = require('../app/utils/index')
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 80
 
 /* setar as variáveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs');
