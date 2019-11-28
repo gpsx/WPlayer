@@ -32,55 +32,29 @@
 </head>
 
 <body>
-	<div class="main-menu">
-		<header class="header">
-			<a href="index.html" class="logo"><i class="ico ti-harddrive"></i>WPERFORANCE</a>
-			<button type="button" class="button-close fa fa-times js__menu_close"></button>
-		</header>
-		<!-- /.header -->
-		<div class="content">
-
-			<div class="navigation">
-				<ul class="menu js__accordion">
-					<li>
-						<a class="waves-effect" href="index.html"><i
-								class="menu-icon ti-dashboard"></i><span>Home</span></a>
-					</li>
-					<li>
-						<a class="waves-effect" href="index.html"><i
-								class="menu-icon ti-dashboard"></i><span>Histórico</span></a>
-					</li>
-					<li>
-						<a class="waves-effect" href="index.html"><i
-								class="menu-icon ti-dashboard"></i><span>Perfil</span></a>
-					</li>
-					<li>
-						<a class="waves-effect" href="index.html"><i
-								class="menu-icon ti-dashboard"></i><span>Suporte</span></a>
-					</li>
-				</ul>
-			</div>
-			<!-- /.navigation -->
-		</div>
-		<!-- /.content -->
-	</div>
-	<!-- /.main-menu -->
-
+	<% if (machineKey != undefined){ %>
+	<%- include('../include/gamer/sidebar') -%>
+	<%} else {%>
+	<%- include('../include/corp/sidebar') -%>
+	<% } %>
 	<div class="fixed-navbar">
 		<div class="pull-left">
 			<button type="button"
 				class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
-			<h1 class="page-title">Nome da máquina</h1>
+			<h1 class="page-title"><%= information.name %></h1>
 			<!-- /.page-title -->
 		</div>
 		<!-- /.pull-left -->
+		<div class="pull-right">
+			<a href="../../../logout" class="ico-item fa fa-sign-out"></a>
+		</div>
 	</div>
 	<!-- /.fixed-navbar -->
 	<div id="wrapper">
 		<div class="main-content">
 			<div class="row small-spacing">
 				<div class="col-lg-12 col-xs-12">
-					<div class="col-lg-4 col-md-6 col-xs-12">
+					<div class="col-lg-6 col-md-6 col-xs-12">
 						<div class="box-content bg-info text-white">
 							<div class="statistics-box with-icon">
 								<i class="ico small fa fa-laptop"></i>
@@ -90,7 +64,7 @@
 						</div>
 						<!-- /.box-content -->
 					</div>
-					<div class="col-lg-4 col-md-6 col-xs-12">
+					<div class="col-lg-6 col-md-6 col-xs-12">
 						<div class="box-content">
 							<div class="statistics-box with-icon">
 								<i class="ico small fa fa-key"></i>
@@ -100,12 +74,12 @@
 						</div>
 						<!-- /.box-content -->
 					</div>
-					<div class="col-lg-4 col-md-6 col-xs-12">
-						<div class="box-content bg-success text-white">
+					<div class="col-lg-12 col-md-6 col-xs-12">
+						<div class="box-content bg-<%= information.computer_state%> text-white">
 							<div class="statistics-box with-icon">
-								<i class="ico small fa fa-thumbs-o-up"></i>
+								<i class="ico small fa <%= information.icon%>"></i>
 								<p class="text text-white">Estado da máquina</p>
-								<h2 class="counter">Estável</h2>
+								<h2 class="counter"><%= information.state_string%></h2>
 							</div>
 						</div>
 						<!-- /.box-content -->

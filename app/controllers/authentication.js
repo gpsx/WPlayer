@@ -30,7 +30,7 @@ module.exports = {
                 .first()
         req.session.user = user
         if (user) {
-			if (user.PLAYER_ID == '') {
+			if (user.PLAYER_ID == null) {
                 return '/corp/home'
             }else{
                 console.log('porcaria');
