@@ -22,8 +22,8 @@ var corpController = require('../app/controllers/home-corp')
 var machineController = require('../app/controllers/machine-detail')
 var utils = require('../app/utils/index')
 
-const PORT = process.env.PORT || 3000
-
+//const PORT = process.env.PORT || 3000
+app.set('port', (process.env.PORT || 3000));
 /* setar as variáveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
@@ -52,8 +52,8 @@ consign()
 	.into(app);
 
 /* parametrizar a porta de escuta */
-var server = app.listen(PORT, () => {	
-	console.log(`Executando na porta ${ PORT }`)
+var server = app.listen(app.get('port'), () => {	
+	console.log(`Executando na porta ${ app.get('port') }`)
 })
 
 var s = io(server);
