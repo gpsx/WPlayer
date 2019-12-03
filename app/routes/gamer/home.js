@@ -9,7 +9,12 @@ module.exports = function (app) {
 		const twoWeeks = await controller.get2WeeksGames(user.PLAYER_ID)
 		const hardwareInfo = await controller.getLastHardware(user.CUSTUMER_KEY)
 		const recomendations = await controller.getRecomendations(user.PLAYER_ID)
-		console.log(top5, twoWeeks, hardwareInfo, recomendations)
-		res.render('gamer/home', { top5, twoWeeks, hardwareInfo, recomendations });
+		var machineKey = user.MACHINE_KEY
+		console.log(top5)
+		if (top5 != []) {
+			res.render('gamer/home', { top5, twoWeeks, hardwareInfo, recomendations, user, machineKey });
+		}else{
+			res.render('gamer/non-user')
+		}
 	});
 }

@@ -16,13 +16,7 @@ module.exports = {
         return result
     },
     getLastHardware: async (CUSTUMER_KEY)=>{
-        var gameDetails = await db('VW_GAME_DETAILS').where({GAME_ID : '291550'})
-        //var gameDLC = await db('VW_DLCS').where({GAME_ID : '291550'})
-        console.log(gameDetails);
         
-        //var result = await db('VW_TOP_ACTIVE').where({ CUSTUMER_KEY })
-        //console.log(result);
-        //return result
     },
     getRecomendations: async (STEAM_ID)=>{
         var result = await db('VW_RECOMMENDATION').where({STEAM_ID}).orderBy('TOTAL_RECOMMENDATIONS', 'desc').limit(6)

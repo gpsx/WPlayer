@@ -3,8 +3,9 @@ const utils = require('../utils')
 
 module.exports = {
     getInformation: async (CUSTOMER_ID) => {
+        console.log("cu");
         var machinesw = await db('MACHINE')
-        console.log(machinesw.MACHINE_NAME);  
+        console.log(machinesw);  
         var machines = await db('VW_CORP_MACHINES').where({CUSTOMER_ID}).orderBy('COMPUTER_STATE', 'asc')
         for(i in machines){
             switch (machines[i].COMPUTER_STATE) {

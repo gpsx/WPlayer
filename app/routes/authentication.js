@@ -25,6 +25,5 @@ module.exports = function (app) {
 		console.log(req.session.user);		
 		res.redirect(result)
 	})
-
-
+	
 }   

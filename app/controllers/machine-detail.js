@@ -16,6 +16,24 @@ module.exports = {
             GPU: getData(percents, 'GPU'),
             state: getState(percents)
         }
+        switch (theMachine.computer_state) {
+            case 'danger':
+                theMachine.state_string = 'Alerta'
+                theMachine.icon = 'fa-thumbs-o-down'
+                break;
+            case 'warning':
+                theMachine.state_string = 'Atenção'
+                theMachine.icon = 'fa-warning'
+                break;
+            case 'success':
+                theMachine.state_string = 'Estável'
+                theMachine.icon = 'fa-thumbs-o-up'
+                break;
+            default:
+                theMachine.computer_state = 'info'
+                theMachine.state_string = 'Sem dados'
+                theMachine.icon = 'fa-cog'
+          }
         console.log(theMachine);
         
         return theMachine
