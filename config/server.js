@@ -23,7 +23,7 @@ var machineController = require('../app/controllers/machine-detail')
 var utils = require('../app/utils/index')
 
 //const PORT = process.env.PORT || 3000
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 5000));
 /* setar as variáveis 'view engine' e 'views' do express */
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
