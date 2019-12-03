@@ -66,8 +66,7 @@ s.on('connection', (socket) => {//É mostrado quando alguem se conecta
 		console.log('Data request on server...');
 		var machines = await corpController.getInformation(CUSTOMER_ID)
 		console.log(machines);
-		
-		s.emit('getCorpMachines',machines);
+		s.to(socket.id).emit('getCorpMachines',machines);
 	})
 	socket.on('requestMachinePercent', async (key)=>{	
 		console.log('Data request on server...');
@@ -89,7 +88,7 @@ s.on('connection', (socket) => {//É mostrado quando alguem se conecta
 			}
 		}
 		console.log(data);
-		s.emit('getMachinePercent',data);
+		s.to(socket.id).emit('getMachinePercent',data);
 	})
 	
 })

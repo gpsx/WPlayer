@@ -7,7 +7,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>WPLAYER - STARTER PAGE</title>
+	<title>WPLAYER</title>
 
 	<!-- Main Styles -->
 	<link rel="stylesheet" href="../../../assets/styles/style.min.css">
@@ -46,7 +46,7 @@
 		<div class="row small-spacing">
 			<div class="col-md-3 col-xs-12">
 				<div class="box-content bordered primary margin-bottom-20">
-					<div class="profile-avatar">
+					<div class="profile-avatar text-center">
 						<img src="<%= information.profileGamer.AVATAR%>" alt="">
 						<h3><strong><%= information.profileGamer.GAMER_NICKNAME%></strong></h3>
 						<h4><%= information.profileGamer.GAMER_API_NAME%></h4>
@@ -63,7 +63,7 @@
 								<td><%= information.profileGamer.CURRENT_LEVEL%></td>
 							</tr>
 							<tr>
-								<td>Member Since</td>
+								<td>Membro desde</td>
 								<td><%= information.profileGamer.CREATION_DATE%></td>
 							</tr>
 						</tbody>
@@ -71,125 +71,92 @@
 				</div>
 				<!-- /.box-content bordered -->
 			</div>
-			<!-- /.col-md-3 col-xs-12 -->
 			<div class="col-md-9 col-xs-12">
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="box-content card">
-							<h4 class="box-title"><i class="fa fa-steam ico"></i>Sobre</h4>
-							<!-- /.box-title -->
-							<div class="card-content">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Nome</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7"><%= information.profileGamer.GAMER_NAME%></div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Email:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7"><%= information.profileGamer.CUSTOMER_EMAIL%></div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Nickname:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7"><%= information.profileGamer.GAMER_NICKNAME%></div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Estado do perfil:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7"><%= information.profileGamer.PROFILE_STATE%></div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Ultima vez online:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7"><%= information.profileGamer.LAST_LOGOFF%></div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Data de criação da conta:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7"><%= information.profileGamer.CREATION_DATE%></div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Código de utilização:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7"><%= information.profileGamer.MACHINE_KEY%></div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Valor atual da conta:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7">R$ <%= information.profileGamer.ACCOUNT_VALUE%></div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Tempo total gasto na steam:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7"><%= information.profileGamer.TOTAL_HOURS%> h</div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-									<div class="col-md-6">
-										<div class="row">
-											<div class="col-xs-5"><label>Quantidade de jogos:</label></div>
-											<!-- /.col-xs-5 -->
-											<div class="col-xs-7"><%= information.profileGamer.AMOUNT_GAMES%></div>
-											<!-- /.col-xs-7 -->
-										</div>
-										<!-- /.row -->
-									</div>
-									<!-- /.col-md-6 -->
-								</div>
-								<!-- /.row -->
+				<div class="row small-spacing">
+					<div class="col-md-6 col-md-6 col-xs-12">
+						<div class="box-content">
+							<div class="statistics-box with-icon">
+								<i class="ico fa fa-user text-inverse"></i>
+								<h2 class="counter text-inverse"><%= information.profileGamer.GAMER_NAME%></h2>
+								<p class="text">Nome</p>
 							</div>
-							<!-- /.card-content -->
 						</div>
-						<!-- /.box-content card -->
+						<!-- /.box-content -->
+					</div>
+					<div class="col-md-6 col-md-6 col-xs-12">
+						<div class="box-content">
+							<div class="statistics-box with-icon">
+								<i class="ico fa fa-steam text-inverse"></i>
+								<h2 class="counter text-inverse"><%= information.profileGamer.GAMER_NICKNAME%></h2>
+								<p class="text">Nickname</p>
+							</div>
+						</div>
+						<!-- /.box-content -->
+					</div>
+					<div class="col-md-6 col-md-6 col-xs-12">
+						<div class="box-content">
+							<div class="statistics-box with-icon">
+								<i class="ico fa fa-envelope text-inverse"></i>
+								<h2 class="counter text-inverse h4"><%= information.profileGamer.CUSTOMER_EMAIL%></h2>
+								<p class="text">Email</p>
+							</div>
+						</div>
+						<!-- /.box-content -->
+					</div>
+					<div class="col-md-6 col-md-6 col-xs-12">
+						<div class="box-content">
+							<div class="statistics-box with-icon">
+								<i class="ico fa fa-key text-inverse"></i>
+								<h2 class="counter text-inverse h4"><%= information.profileGamer.MACHINE_KEY%></h2>
+								<p class="text">Código da máquina</p>
+							</div>
+						</div>
+						<!-- /.box-content -->
+					</div>
+					<div class="col-md-6 col-md-6 col-xs-12">
+						<div class="box-content">
+							<div class="statistics-box with-icon">
+								<i class="ico fa fa-globe text-inverse"></i>
+								<h2 class="counter text-inverse"><%= information.profileGamer.PROFILE_STATE%></h2>
+								<p class="text">Estado do perfil</p>
+							</div>
+						</div>
+						<!-- /.box-content -->
+					</div>
+					<div class="col-md-6 col-md-6 col-xs-12">
+						<div class="box-content">
+							<div class="statistics-box with-icon">
+								<i class="ico fa fa-money text-inverse"></i>
+								<h2 class="counter text-inverse">R$ <%= information.profileGamer.ACCOUNT_VALUE%></h2>
+								<p class="text">Valor atual da conta</p>
+							</div>
+						</div>
+						<!-- /.box-content -->
+					</div>
+					<div class="col-md-6 col-md-6 col-xs-12">
+						<div class="box-content">
+							<div class="statistics-box with-icon">
+								<i class="ico fa fa-clock-o text-inverse"></i>
+								<h2 class="counter text-inverse"><%= information.profileGamer.TOTAL_HOURS%> H</h2>
+								<p class="text">Total de horas</p>
+							</div>
+						</div>
+						<!-- /.box-content -->
+					</div>
+					<div class="col-md-6 col-md-6 col-xs-12">
+						<div class="box-content">
+							<div class="statistics-box with-icon">
+								<i class="ico fa fa-gamepad text-inverse"></i>
+								<h2 class="counter text-inverse"><%= information.profileGamer.AMOUNT_GAMES%> H</h2>
+								<p class="text">Quantidade de jogos</p>
+							</div>
+						</div>
+						<!-- /.box-content -->
 					</div>
 				</div>
 			</div>
-			<!-- /.col-md-9 col-xs-12 -->
+			<!-- .row -->
+			<!-- /.col-md-3 col-xs-12 -->
 		</div>
 	</div>
 	<!-- /.main-content -->
